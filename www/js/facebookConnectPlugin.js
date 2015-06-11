@@ -9,7 +9,7 @@
  *
  */
 
-if (cordova.platformId == "browser") {
+if (!cordova.browser) {
 
     var facebookConnectPlugin = {
 

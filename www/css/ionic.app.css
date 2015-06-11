@@ -7680,3 +7680,10 @@ a.button {
 
 .margin-tb {
   margin: 1em 0; }
+
+.cover {
+  position: absolute !important;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0; }

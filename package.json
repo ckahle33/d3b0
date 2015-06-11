@@ -17,5 +17,11 @@
   "cordovaPlugins": [
     "com.ionic.keyboard"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [
+    "ios",
+    {
+      "platform": "android",
+      "locator": "browser"
+    }
+  ]
 }
