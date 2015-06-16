@@ -128,8 +128,53 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope) {
+.controller('ScannerCtrl', function($scope, $cordovaBarcodeScanner) {
   $scope.settings = {
     enableFriends: true
   };
+
+    // doesnt support PDF417
+    //document.addEventListener('deviceready', function(){
+    //
+    //    $scope.scanBarcode = function() {
+    //        $cordovaBarcodeScanner
+    //            .scan()
+    //            .then(function(barcodeData) {
+    //                // Success! Barcode data is here
+    //                console.log(barcodeData);
+    //            }, function(error) {
+    //                // An error occurred
+    //                console.log(error);
+    //            });
+    //    }
+    //}, false)
+
+    document.addEventListener('deviceready', function(){
+
+
+        var types = ['PDF417'];
+
+        var options = {
+            beep : false,  // Beep on
+            noDialog : true,
+            removeOverlay :true,
+            uncertain : false, //Recommended
+            quietZone : false, //Recommended
+            highRes : false, //Recommended
+            frontFace : false
+        };
+
+        $scope.scanBarcode = function() {
+            cordova.plugins.pdf417Scanner.scan(function(result){
+              console.log(result);
+
+            }, function(err){
+                console.log(err);
+
+            }, types, options, null, null );
+        }
+    }, false)
+
+
+
 });
